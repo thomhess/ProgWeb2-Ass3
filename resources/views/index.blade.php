@@ -8,7 +8,7 @@
         <div class="row">
            <div class="col-center">
             <div class="btn-group" role="group" aria-label="...">
-              <button type="button" class="btn btn-default" name="cat[]" value="0">Alle</button>
+              <button type="button" class="btn btn-default" onclick="loadAll()" name="cat[]" value="0">Alle</button>
               @foreach($categories as $category)
                   <button type="button" class="btn btn-default" onclick="loadCat( {{$category->id}} )" name="cat[]" value="{{$category->id}}">{{$category->name}}</button>
               @endforeach
@@ -32,26 +32,8 @@
     </div>
 @endsection
 
-
 @section ('scripts')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script>
-    function loadCat(id){
-        $.ajax({
-            url: "makeJSON/" + id
-        }).done(function(response) {
-            $('#posts').html('');
-            for (var i = 0; i < response.length; i++) {
-                writePosts(response[i]);
-            }
-        });
-    }
-    
-    function writePosts (response) {
-        $('#posts').append('<div class="card" id="card'+ response.id +'"><img src="http://placehold.it/300x200" alt="Card image cap"><h2><a href="/public/posts/'+ response.id +'">'+ response.title +'</h2></div>');
-    }
-    
-    
-</script>
+<script src="{{ asset('js/ajax.js') }}"></script>
 
 @endsection

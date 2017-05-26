@@ -20,4 +20,4 @@ Route::post('/messages', 'MessageController@store');
 
 Route::get('/makeJSON', 'PostController@makeJSON');
 
-Route::get('/makeJSON/{catId}', 'PostController@makeJSON');
+Route::get('/makeJSON/{catId}', 'PostController@makeJSONcat');

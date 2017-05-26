@@ -56,7 +56,16 @@ class PostController extends Controller
         
     }
     
-    public function makeJSON($catId){
+    public function makeJSON(){
+        
+        $posts = Post::all();
+        
+        return response()->json($posts);
+        
+        
+    }
+    
+    public function makeJSONcat($catId){
         
         $posts = Post::where('category_id', $catId)->get();
         
