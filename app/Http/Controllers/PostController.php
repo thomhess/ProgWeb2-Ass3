@@ -38,12 +38,20 @@ class PostController extends Controller
         
     }
     
-    public function store(){
-        
+    public function store(Request $data){
+        // add formval middlewhere
+
+        if($data->hasFile('image'))
+            $file = $data->file('image');
+
+        $filepath = $file->store('post');
+        //Store a photo/image
+
+
         Post::create([
             'title' => request('title'),
             'body' =>  request('body'),
-            'img' => 'imgsrc', // real imgsrc need to be put in and fixed and stuff
+            'img' => $filepath, // real imgsrc need to be put in and fixed and stuff
             'created_at' => time(),
             'updated_at' => time(),
             'category_id' => request('category')

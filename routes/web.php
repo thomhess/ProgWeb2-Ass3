@@ -6,7 +6,7 @@ Route::get('/posts/{post}', 'PostController@show');
 
 Auth::routes();
 
-Route::post('/posts', 'PostController@store');
+Route::post('/posts', 'PostController@store')->name('posts');
 
 
 //// Logged in ////

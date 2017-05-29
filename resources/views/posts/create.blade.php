@@ -5,7 +5,7 @@
     <div class="container">
         <h1>Legg inn ny annonse</h1>
         <hr>
-        <form method="POST" action="/public/posts">
+        <form method="POST" action="{{ route('posts') }}" enctype="multipart/form-data">
          {{ csrf_field() }}
           <div class="form-group">
             <label for="exampleInputTitle">Tittel</label>
@@ -27,7 +27,7 @@
           </div>
           <div class="form-group">
             <label for="exampleInputFile">Last opp bilde</label>
-            <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+            <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" name="image">
             <small id="fileHelp" class="form-text text-muted">Her kan du laste opp et bilde som passer til annonsen</small>
           </div>
           <button type="submit" class="btn btn-primary">Publiser annonse</button>

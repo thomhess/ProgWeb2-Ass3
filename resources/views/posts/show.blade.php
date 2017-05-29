@@ -5,8 +5,9 @@
 
 <div class="container">
     
-<h1>{{ $post->title}}</h1>
-<p> {{ $post->body}}</p>
+<h1>{{ $post->title }}</h1>
+<p> {{ $post->body }}</p>
+<img src="../../storage/app/{{ $post->img }}">
 
  <!-- Authentication Links -->
 @if (Auth::guest())
