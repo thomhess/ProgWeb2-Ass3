@@ -1,6 +1,6 @@
 function loadCat(id){
         $.ajax({
-            url: "makeJSON/" + id
+            url: "api/posts/" + id
         }).done(function(response) {
             $('#posts').html('');
             for (var i = 0; i < response.length; i++) {
@@ -11,7 +11,7 @@ function loadCat(id){
     
     function loadAll(){
         $.ajax({
-            url: "makeJSON"
+            url: "api/posts"
         }).done(function(response) {
             $('#posts').html('');
             for (var i = 0; i < response.length; i++) {

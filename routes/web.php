@@ -18,6 +18,6 @@ Route::post('/posts', 'PostController@store');
 
 Route::post('/messages', 'MessageController@store');
 
-Route::get('/makeJSON', 'PostController@makeJSON');
+Route::get('/api/posts', 'PostController@postAPI');
 
-Route::get('/makeJSON/{catId}', 'PostController@makeJSONcat');
+Route::get('/api/posts/{catId}', 'PostController@postAPIcat');
