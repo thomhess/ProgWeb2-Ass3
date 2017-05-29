@@ -1,6 +1,6 @@
 function getMessages(id, type){
     $.ajax({
-        url: '/public/api/messages/' + type + '/' + id,
+        url: '../api/messages/' + type + '/' + id,
         success: function(messages) {
             $.each(messages, function(i, message){
                 $('#' + type).append('<h3>'+ message.title +'</h3><p>'+ message.content +'</p><hr>');
