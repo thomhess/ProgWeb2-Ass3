@@ -28,7 +28,7 @@ class MessageController extends Controller
         
         
         return view('messages', ['recievedMessages' => $recievedMessages, 
-                             'sentMessages' => $sentMessages]);
+                             'sentMessages' => $sentMessages, 'id' => $id]);
 
     }
     
@@ -38,6 +38,7 @@ class MessageController extends Controller
         
             return view('createmessage');
         } else {
+            
             return redirect('/');
         }
     }
@@ -47,10 +48,8 @@ class MessageController extends Controller
         Post::create([
             'title' => request('title'),
             'content' =>  request('content'),
-            'img' => 'imgsrc', // real imgsrc need to be put in and fixed and stuff
             'created_at' => time(),
             'updated_at' => time(),
-            'category_id' => 1 // need to be fixed
             
             
         ]);
@@ -62,8 +61,35 @@ class MessageController extends Controller
     
     public function messageAPIfrom($user) {
         
-        $messages = Message::where('id', $user)->get();
+        $id = Auth::user()->id;
         
-        return response()->json($messages);
+        if ($user == $id) {
+            
+            $messages = Message::where('from', $user)->get();
+        
+            return response()->json($messages);
+        }
+        
+        else {
+            
+            return redirect('/');
+        }
+    }
+    
+    public function messageAPIto($user) {
+        
+        $id = Auth::user()->id;
+        
+        if ($user == $id) {
+            
+            $messages = Message::where('to', $user)->get();
+        
+            return response()->json($messages);
+        }
+        
+        else {
+            
+            return redirect('/');
+        }
     }
 }
