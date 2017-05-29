@@ -46,7 +46,7 @@ class PostController extends Controller
             'img' => 'imgsrc', // real imgsrc need to be put in and fixed and stuff
             'created_at' => time(),
             'updated_at' => time(),
-            'category_id' => 1 // need to be fixed
+            'category_id' => request('category')
             
             
         ]);
@@ -56,7 +56,7 @@ class PostController extends Controller
         
     }
     
-    public function makeJSON(){
+    public function postAPI(){
         
         $posts = Post::all();
         
@@ -65,7 +65,7 @@ class PostController extends Controller
         
     }
     
-    public function makeJSONcat($catId){
+    public function postAPIcat($catId){
         
         $posts = Post::where('category_id', $catId)->get();
         

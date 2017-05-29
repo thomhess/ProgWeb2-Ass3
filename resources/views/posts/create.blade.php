@@ -11,25 +11,25 @@
             <label for="exampleInputTitle">Tittel</label>
             <input type="text" class="form-control" id="exampleInputTitle" placeholder="Tittel" name="title">
           </div>
-          <!--div class="form-group">
+          <div class="form-group">
             <label for="cat">Velg kategori</label>
             <select class="form-control" id="cat" name="category">
                 @foreach($categories as $category)
               
-                <option>{{ $category->name }}</option>
+                <option value="{{ $category->id }}">{{ $category->name }}</option>
               
                 @endforeach
             </select>
-          </div-->
+          </div>
           <div class="form-group">
             <label for="desc">Beskrivelse</label>
             <textarea class="form-control" id="desc" rows="3" name="body"></textarea>
           </div>
-          <!--div class="form-group">
-            <label for="exampleInputFile">File input</label>
+          <div class="form-group">
+            <label for="exampleInputFile">Last opp bilde</label>
             <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
-            <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
-          </div-->
+            <small id="fileHelp" class="form-text text-muted">Her kan du laste opp et bilde som passer til annonsen</small>
+          </div>
           <button type="submit" class="btn btn-primary">Publiser annonse</button>
         </form>
         <br>
