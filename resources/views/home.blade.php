@@ -8,23 +8,8 @@
                 <div class="panel-heading">Inbox</div>
 
                 <div class="panel-body">
-                    @foreach ($recievedMessages as $message)
-                        <h3>{{ $message->title }}</h3>
-                        <p>{{ $message->content }}</p>
-                        <hr>
-                    @endforeach
+                  <p>Halla</p>
                 </div>
-            </div>
-            <div class="panel panel-default">
-            <div class="panel-heading">Sendte meldinger</div>
-
-            <div class="panel-body">
-                @foreach ($sentMessages as $message)
-                    <h3>{{ $message->title }}</h3>
-                    <p>{{ $message->content }}</p>
-                    <hr>
-                @endforeach
-            </div>
             </div>
         </div>
     </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Post;
+use App\Message;
 
 class MessageController extends Controller
 {
@@ -26,7 +27,7 @@ class MessageController extends Controller
         $sentMessages = Message::all()->where('from', $id);
         
         
-        return view('home', ['recievedMessages' => $recievedMessages, 
+        return view('messages', ['recievedMessages' => $recievedMessages, 
                              'sentMessages' => $sentMessages]);
 
     }
@@ -57,5 +58,12 @@ class MessageController extends Controller
         
         return redirect('/');
         
+    }
+    
+    public function messageAPIfrom($user) {
+        
+        $messages = Message::where('id', $user)->get();
+        
+        return response()->json($messages);
     }
 }
