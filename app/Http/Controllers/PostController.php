@@ -39,6 +39,8 @@ class PostController extends Controller
     }
     
     public function store(Request $data){
+        $id = Auth::user()->id;
+        
         // add formval middlewhere
 
         if($data->hasFile('image'))
@@ -54,13 +56,21 @@ class PostController extends Controller
             'img' => $filepath, // real imgsrc need to be put in and fixed and stuff
             'created_at' => time(),
             'updated_at' => time(),
-            'category_id' => request('category')
+            'category_id' => request('category'),
+            'user_id' => $id
             
             
         ]);
         
         
         return redirect('/');
+        
+    }
+    
+    public function personal(){
+        $id = Auth::id();
+        
+        return view('posts.myposts', ['id' => $id ]);
         
     }
     
@@ -73,9 +83,27 @@ class PostController extends Controller
         
     }
     
+    public function postAPIid($id){
+        
+        $posts = Post::with('user')->where('id', $id)->get();
+        
+        return response()->json($posts);
+        
+        
+    }
+    
     public function postAPIcat($catId){
         
         $posts = Post::with('user')->where('category_id', $catId)->get();
+        
+        return response()->json($posts);
+        
+        
+    }
+    
+    public function postAPIuser($userID){
+        
+        $posts = Post::with('user')->where('user_id', $userID)->get();
         
         return response()->json($posts);
         

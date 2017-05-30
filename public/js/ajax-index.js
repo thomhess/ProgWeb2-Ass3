@@ -1,8 +1,9 @@
 function loadCat(id){
         $.ajax({
-            url: "api/posts/" + id
+            url: "api/posts/cat/" + id
         }).done(function(response) {
             $('#posts').html('');
+            response.reverse();
             for (var i = 0; i < response.length; i++) {
                 writePosts(response[i]);
             }
@@ -14,6 +15,7 @@ function loadCat(id){
             url: "api/posts"
         }).done(function(response) {
             $('#posts').html('');
+            response.reverse();
             for (var i = 0; i < response.length; i++) {
                 writePosts(response[i]);
             }

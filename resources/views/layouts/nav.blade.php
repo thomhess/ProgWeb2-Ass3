@@ -42,6 +42,11 @@
                                         </a>
                                     </li>
                                     <li>
+                                        <a href="{{ route('myposts') }}">
+                                            Mine Annonser
+                                        </a>
+                                    </li>
+                                    <li>
                                         <a href="{{ route('messages') }}">
                                             Meldinger
                                         </a>
@@ -50,7 +55,7 @@
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Logout
+                                            Logg ut
                                         </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
