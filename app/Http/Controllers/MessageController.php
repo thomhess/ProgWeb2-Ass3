@@ -65,7 +65,7 @@ class MessageController extends Controller
         
         if ($user == $id) {
             
-            $messages = Message::where('from', $user)->get();
+            $messages = Message::with('sender', 'reciever')->where('from', $user)->get();
         
             return response()->json($messages);
         }
@@ -82,7 +82,7 @@ class MessageController extends Controller
         
         if ($user == $id) {
             
-            $messages = Message::where('to', $user)->get();
+            $messages = Message::with('sender', 'reciever')->where('to', $user)->get();
         
             return response()->json($messages);
         }

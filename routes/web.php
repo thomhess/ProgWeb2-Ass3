@@ -33,3 +33,5 @@ Route::get('/api/posts/{catId}', 'PostController@postAPIcat');
 Route::get('/api/messages/from/{user}', 'MessageController@messageAPIfrom');
 
 Route::get('/api/messages/to/{user}', 'MessageController@messageAPIto');
+
+Route::get('/api/users/{id}', 'HomeController@userAPI');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Message;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -33,5 +34,10 @@ class HomeController extends Controller
         return view('home', ['recievedMessages' => $recievedMessages, 
                              'sentMessages' => $sentMessages]);
 
+    }
+    
+    public function userAPI(User $id){
+        
+        return response()->json($id);
     }
 }

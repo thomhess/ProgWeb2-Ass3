@@ -1,9 +1,12 @@
+var username = null;
+
 function getMessages(id, type){
     $.ajax({
         url: '../api/messages/' + type + '/' + id,
         success: function(messages) {
             $.each(messages, function(i, message){
-                $('#' + type).append('<h3>'+ message.title +'</h3><p>'+ message.content +'</p><hr>');
+                var username = ((type == 'to') ? '<b>Melding fra: </b>' + message.sender.name : '<b>Melding til: </b>' +  message.reciever.name);
+                $('#' + type).append('<p>'+ username +'</p><h3>'+ message.title +'</h3><p>'+ message.content +'</p><hr>');
             })
         },
         error: function(){
@@ -12,5 +15,6 @@ function getMessages(id, type){
     })
 }
 
-getMessages(id, 'from');
+
 getMessages(id, 'to');
+getMessages(id, 'from');
