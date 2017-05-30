@@ -5,7 +5,7 @@ function getMessages(id, type){
         url: '../api/messages/' + type + '/' + id,
         success: function(messages) {
             $.each(messages, function(i, message){
-                var username = ((type == 'to') ? '<b>Melding fra: </b>' + message.sender.name : '<b>Melding til: </b>' +  message.reciever.name);
+                var username = ((type == 'to') ? 'Melding fra: <b>' + message.sender.name + '</b>' : 'Melding til: <b>' +  message.reciever.name + '</b>');
                 $('#' + type).append('<p>'+ username +'</p><h3>'+ message.title +'</h3><p>'+ message.content +'</p><hr>');
             })
         },

@@ -7,6 +7,7 @@
     
 <h1>{{ $post->title }}</h1>
 <p> {{ $post->body }}</p>
+<p> Publisert av: <b>{{ $post->user->name }}</b></p>
 <img class="showImage" src="../../storage/app/{{ $post->img }}">
 
  <!-- Authentication Links -->

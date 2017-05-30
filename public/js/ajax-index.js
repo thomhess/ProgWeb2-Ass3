@@ -21,7 +21,7 @@ function loadCat(id){
     }
     
     function writePosts (response) {
-        $('#posts').append('<div class="card col-xs-12 col-md-4 " id="card'+ response.id +'"><img class="img-responsive" src="../storage/app/'+response.img+'" alt="Card image cap"><h2><a href="posts/'+ response.id +'">'+ response.title +'</a></h2></div>');
+        $('#posts').append('<div class="card col-xs-12 col-md-4 " id="card'+ response.id +'"><img class="img-responsive" src="../storage/app/'+response.img+'" alt="Card image cap"><h2><a href="posts/'+ response.id +'">'+ response.title +'</a></h2><p>Publisert av: <b>'+ response.user.name +'</b></p></div>');
     }
     
     loadAll();

@@ -66,7 +66,7 @@ class PostController extends Controller
     
     public function postAPI(){
         
-        $posts = Post::all();
+        $posts = Post::with('user')->get();
         
         return response()->json($posts);
         
@@ -75,7 +75,7 @@ class PostController extends Controller
     
     public function postAPIcat($catId){
         
-        $posts = Post::where('category_id', $catId)->get();
+        $posts = Post::with('user')->where('category_id', $catId)->get();
         
         return response()->json($posts);
         

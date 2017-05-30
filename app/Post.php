@@ -12,5 +12,10 @@ class Post extends Model
     	// Something like this
     	return $this->haveOne('image')->get();
     }
+    
+    public function user(){
+    
+        return $this->belongsTo('App\User', 'user_id');
+    }
 
 }
