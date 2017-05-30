@@ -7,7 +7,7 @@
     
 <h1>{{ $post->title }}</h1>
 <p> {{ $post->body }}</p>
-<img src="../../storage/app/{{ $post->img }}">
+<img class="showImage" src="../../storage/app/{{ $post->img }}">
 
  <!-- Authentication Links -->
 @if (Auth::guest())
