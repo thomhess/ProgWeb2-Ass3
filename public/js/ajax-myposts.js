@@ -34,7 +34,7 @@ function getUsersPosts(id){
         });
 }) */
 
-/*function delPost(delPostID){
+function delPost(delPostID){
     console.log(delPostID);
     
     var token = $('#token').val();
@@ -42,15 +42,16 @@ function getUsersPosts(id){
     $.ajax({
             type: "DELETE",
             url: '../api/posts/' + delPostID,
+            data: { "_token": "{{ csrf_token() }}" },
             success: function (data) {
-
-                $("#mypost" + delPostID).remove();
+                console.log(data);
+                //$("#mypost" + delPostID).remove();
             },
             error: function (data) {
                 console.log('Error:', data);
             }
         });
-}*/
+}
 
 
 getUsersPosts(id);
