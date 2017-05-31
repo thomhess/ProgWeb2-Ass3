@@ -9,7 +9,7 @@
          {{ csrf_field() }}
           <div class="form-group">
             <label for="exampleInputTitle">Tittel</label>
-            <input type="text" class="form-control" id="exampleInputTitle" placeholder="Tittel" name="title" required>
+            <input type="text" class="form-control" id="exampleInputTitle" placeholder="Tittel" name="titel" required>
           </div>
           <div class="form-group">
             <label for="cat">Velg kategori</label>
@@ -23,11 +23,11 @@
           </div>
           <div class="form-group">
             <label for="desc">Beskrivelse</label>
-            <textarea class="form-control" id="desc" rows="3" name="body" required></textarea>
+            <textarea class="form-control" id="desc" rows="3" name="beskrivelse" required></textarea>
           </div>
           <div class="form-group">
             <label for="exampleInputFile">Last opp bilde</label>
-            <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" name="image" accept="image/*">
+            <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" name="bilde" accept="image/*">
             <small id="fileHelp" class="form-text text-muted">Her kan du laste opp et bilde som passer til annonsen (jpeg,png,jpg,gif,svg)</small>
           </div>
           <div class="form-group">

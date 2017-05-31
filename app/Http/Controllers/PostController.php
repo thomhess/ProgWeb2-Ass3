@@ -43,22 +43,22 @@ class PostController extends Controller
         
         // validates input from user
         $this->validate(request(),[
-            'title'=> 'required|max:30',
-            'body'=> 'required|min:10',
-            'image'=> 'required|image|mimes:jpeg,png,jpg,gif,svg|max:4048'
+            'titel'=> 'required|max:30',
+            'beskrivelse'=> 'required|min:10',
+            'bilde'=> 'required|image|mimes:jpeg,png,jpg,gif,svg|max:4048'
 
             ]);
 
         // stores image at public/storage/post 
-        if($data->hasFile('image'))
-            $file = $data->file('image');
+        if($data->hasFile('bilde'))
+            $file = $data->file('bilde');
 
         // saves the filepath which is sendt to database
         $filepath = $file->store('post');
 
         Post::create([
-            'title' => request('title'),
-            'body' =>  request('body'),
+            'title' => request('titel'),
+            'body' =>  request('beskrivelse'),
             'img' => $filepath, 
             'created_at' => time(),
             'updated_at' => time(),
