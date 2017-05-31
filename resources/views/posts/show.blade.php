@@ -19,3 +19,14 @@
 </div>
 
 @endsection
+
+
+@section ('scripts')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    var username = {{ $post->user->name }};
+    var userid = {{ $post->user_id }}
+</script>
+<script src="{{ asset('js/ajax-post.js') }}"></script>
+
+@endsection

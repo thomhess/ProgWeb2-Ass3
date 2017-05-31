@@ -1,4 +1,5 @@
 var allMessages = $('#to');
+var name = '';
 
 function getMessages(id, type){
     
@@ -22,7 +23,7 @@ getMessages(id, 'to');
 getMessages(id, 'from');
 
 allMessages.delegate('.replyBtn', 'click', function() {
-    var name = $(this).data('from');
+    name = $(this).data('from');
     var id = $(this).data('rec');
     var modal = $('#messageModal')
     var button = $(event.relatedTarget)
@@ -33,6 +34,10 @@ allMessages.delegate('.replyBtn', 'click', function() {
 
 $("#messageModal").delegate('#sendMessage', 'click', function() {         
     var token = $('input[name="_token"]').val();
+    var title = $('input[name=title]').val();
+    var content = $('textarea[name=content]').val();
+    var reciever = $('input[name=reciever]').val();
+    
     
     $.ajaxSetup({
         headers: {
@@ -41,15 +46,19 @@ $("#messageModal").delegate('#sendMessage', 'click', function() {
     });
     
     $.ajax({
-      url: '/public/messages',
-      type: "post",
-      data: {
-          'title':$('input[name=title]').val(), 
-          'content':$('textarea[name=content]').val(), 
-          'to':$('input[name=reciever]').val(), 
-          '_token': token},
-      success: function(data){
-        console.log(data);
-      }
+        url: '/public/messages',
+        type: "post",
+        data: {
+          'title': title, 
+          'content':content, 
+          'to':reciever, 
+          '_token': token
+        },
+        success: function(data){
+            console.log(data);
+              $('.modal-body').html('<h2>Melding sendt!</h2>');
+              $('.modal-footer').html('<button type="button" class="btn btn-primary" data-dismiss="modal">Lukk</button>');
+              $('#from').append('<p>Melding til: <b>'+ name +'</b></p><h3>'+ title +'</h3><p>'+ content +'</p><hr>');
+        }
     });      
-  }); 
+}); 
