@@ -35,7 +35,9 @@ class MessageController extends Controller
     public function create(){
         
         if (Auth::check()) {
-        
+            
+            $id = Auth::id();
+            
             return view('createmessage');
         } else {
             
@@ -45,14 +47,18 @@ class MessageController extends Controller
     
     public function store(){
         
-        Post::create([
+        Message::create([
             'title' => request('title'),
             'content' =>  request('content'),
+            'from' =>  Auth::id(),
+            'to' =>  request('to'),
             'created_at' => time(),
             'updated_at' => time(),
             
             
         ]);
+        
+        return 'suksess';
         
         
         return redirect('/');
