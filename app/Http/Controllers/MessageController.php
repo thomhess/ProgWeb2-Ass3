@@ -45,7 +45,11 @@ class MessageController extends Controller
         }
     }
     
-    public function store(){
+    public function store(Request $data){
+        $this->validate(request(), [
+            'title' => 'required',
+            'content' => 'required'
+        ]);
         
         Message::create([
             'title' => request('title'),

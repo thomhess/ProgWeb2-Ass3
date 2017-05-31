@@ -59,6 +59,12 @@ $("#messageModal").delegate('#sendMessage', 'click', function() {
               $('.modal-body').html('<h2>Melding sendt!</h2>');
               $('.modal-footer').html('<button type="button" class="btn btn-primary" data-dismiss="modal">Lukk</button>');
               $('#from').append('<p>Melding til: <b>'+ name +'</b></p><h3>'+ title +'</h3><p>'+ content +'</p><hr>');
-        }
+        },
+        error: function(data){
+        var errors = data.responseJSON;
+        console.log(errors);
+            console.log('something');
+        // Render the errors with js ...
+      }
     });      
 }); 
