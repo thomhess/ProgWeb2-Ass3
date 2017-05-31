@@ -28,7 +28,7 @@
           <div class="form-group">
             <label for="exampleInputFile">Last opp bilde</label>
             <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" name="image" accept="image/*">
-            <small id="fileHelp" class="form-text text-muted">Her kan du laste opp et bilde som passer til annonsen (jpeg, png, bmp, gif, or svg)</small>
+            <small id="fileHelp" class="form-text text-muted">Her kan du laste opp et bilde som passer til annonsen (jpeg,png,jpg,gif,svg)</small>
           </div>
           <div class="form-group">
             <button type="submit" class="btn btn-primary">Publiser annonse</button>
