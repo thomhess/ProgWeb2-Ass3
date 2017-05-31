@@ -26,7 +26,7 @@
 }
 
 .card img {
-  max-height:300px;
+  max-height:220px;
 }
 
 @media only screen and (max-width: 667px) {
