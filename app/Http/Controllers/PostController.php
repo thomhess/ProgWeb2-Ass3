@@ -41,19 +41,25 @@ class PostController extends Controller
     public function store(Request $data){
         $id = Auth::user()->id;
         
-        // add formval middlewhere
+        // validates input from user
+        $this->validate(request(),[
+            'title'=> 'required|max:30',
+            'body'=> 'required|min:10',
+            'image'=> 'required|image|mimes:jpeg,png,jpg,gif,svg|max:4048'
 
+            ]);
+
+        // stores image at public/storage/post 
         if($data->hasFile('image'))
             $file = $data->file('image');
 
+        // saves the filepath which is sendt to database
         $filepath = $file->store('post');
-        //Store a photo/image
-
 
         Post::create([
             'title' => request('title'),
             'body' =>  request('body'),
-            'img' => $filepath, // real imgsrc need to be put in and fixed and stuff
+            'img' => $filepath, 
             'created_at' => time(),
             'updated_at' => time(),
             'category_id' => request('category'),
