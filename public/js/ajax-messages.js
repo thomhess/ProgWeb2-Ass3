@@ -46,7 +46,7 @@ $("#messageModal").delegate('#sendMessage', 'click', function() {
     });
     
     $.ajax({
-        url: '/public/messages',
+        url: '../messages',
         type: "post",
         data: {
           'title': title, 
