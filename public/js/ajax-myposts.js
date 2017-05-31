@@ -6,7 +6,7 @@ function getUsersPosts(id){
         url: '../api/posts/user/' + id,
         success: function(posts) {
             $.each(posts, function(i, post){
-                $('#allPosts').append('<div id="mypost'+ post.id +'"><h3>'+ post.title +'</h3><p>'+ post.body +'</p><button class="delPost" value="' + post.id + '" onclick="delPost('+ post.id +')">Slett</button><hr></div>');
+                $('#allPosts').append('<div id="mypost'+ post.id +'"><h3>'+ post.title +'</h3><p>'+ post.body +'</p><button class="delPost" value="' + post.id + '" >Slett</button><hr></div>');
             })
         },
         error: function(){
@@ -15,43 +15,33 @@ function getUsersPosts(id){
     })
 }
 
+getUsersPosts(id);
 
-/*allPosts.delegate('.delPost', 'click', function() {
+
+allPosts.delegate('.delPost', 'click', function() {
+    var delPostID = $(this).val();
+    var token = $('input[name="_token"]').val();
     
-    console.log($(this).val());
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
     
     $.ajax({
-            type: "DELETE",
-            url: '../api/posts/' + $(this).val(),
-            data: { "_token": "{{ csrf_token() }}" },
-            success: function (data) {
-
-                $("#mypost" + delPostID).remove();
+            method: 'POST',
+            url: '../posts',
+            data: {
+                "id": delPostID,
+                "_method": 'DELETE',
+                "_token": token,
             },
-            error: function (data) {
-                console.log('Error:', data);
-            }
-        });
-}) */
-
-function delPost(delPostID){
-    console.log(delPostID);
-    
-    var token = $('#token').val();
-    
-    $.ajax({
-            type: "DELETE",
-            url: '../api/posts/' + delPostID,
-            data: { "_token": "{{ csrf_token() }}" },
             success: function (data) {
                 console.log(data);
-                //$("#mypost" + delPostID).remove();
+                if(data.status) $("#mypost" + delPostID).slideUp();
             },
             error: function (data) {
                 console.log('Error:', data);
             }
         });
-}
-
-
-getUsersPosts(id);
+})

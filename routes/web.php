@@ -8,6 +8,9 @@ Auth::routes();
 
 Route::post('/posts', 'PostController@store')->name('posts');
 
+Route::delete('/posts', 'PostController@delete');
+
+
 
 //// Logged in ////
 
@@ -33,7 +36,7 @@ Route::get('/home/myposts', 'PostController@personal')->name('myposts');
 
 Route::get('/api/posts', 'PostController@postAPI');
 
-//Route::get('/api/posts/{id}', 'PostController@postAPIid');
+Route::get('/api/posts/{id}', 'PostController@postAPIid');
 
 Route::get('/api/posts/cat/{catId}', 'PostController@postAPIcat');
 
@@ -44,9 +47,3 @@ Route::get('/api/messages/from/{user}', 'MessageController@messageAPIfrom');
 Route::get('/api/messages/to/{user}', 'MessageController@messageAPIto');
 
 Route::get('/api/users/{id}', 'HomeController@userAPI');
-
-Route::delete('/api/posts/{id?}', function($id){
-    $post = Post::destroy($id);
-
-    return Response::json($post);
-});

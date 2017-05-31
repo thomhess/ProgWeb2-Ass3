@@ -13,6 +13,7 @@
         </div>
     </div>
 </div>
+{{ csrf_field() }}
 @endsection
 
 

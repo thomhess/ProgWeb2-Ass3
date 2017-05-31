@@ -73,6 +73,15 @@ class PostController extends Controller
         
     }
     
+    public function delete(Request $id){
+        $posts = Post::findOrFail($_POST['id']);
+        if(Auth::id() == $posts->user_id){
+            if($posts->delete())
+                return ['status' => true];
+        }
+        return ['status' => false];
+    }
+    
     public function personal(){
         $id = Auth::id();
         
