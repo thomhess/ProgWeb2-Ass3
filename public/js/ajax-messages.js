@@ -10,7 +10,7 @@ function getMessages(id, type){
                 var username = ((type == 'to') ? 'Melding fra: <b>' + message.sender.name + '</b>' : 'Melding til: <b>' +  message.reciever.name + '</b>');
                 var reply = ((type == 'to')) ? '<button type="button" class="replyBtn" data-toggle="modal" data-target="#messageModal" data-from="'+ message.sender.name +'" data-rec="'+ message.from +'">Svar</button>' : '';
                 
-                $('#' + type).append('<p>'+ username +'</p><h3>'+ message.title +'</h3><p>'+ message.content +'</p>'+ reply +'<hr>');
+                $('#' + type).prepend('<p>Sendt: '+ message.created_at +'</p><p>'+ username +'</p><h3>'+ message.title +'</h3><p>'+ message.content +'</p>'+ reply +'<hr>');
             })
         },
         error: function(){
@@ -58,7 +58,7 @@ $("#messageModal").delegate('#sendMessage', 'click', function() {
             console.log(data);
               $('.modal-body').html('<h2>Melding sendt!</h2>');
               $('.modal-footer').html('<button type="button" class="btn btn-primary" data-dismiss="modal">Lukk</button>');
-              $('#from').append('<p>Melding til: <b>'+ name +'</b></p><h3>'+ title +'</h3><p>'+ content +'</p><hr>');
+              $('#from').prepend('<p>Melding til: <b>'+ name +'</b></p><h3>'+ title +'</h3><p>'+ content +'</p><hr>');
         },
         error: function(data){
         var errors = data.responseJSON;

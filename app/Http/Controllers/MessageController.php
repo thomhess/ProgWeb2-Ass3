@@ -22,13 +22,16 @@ class MessageController extends Controller
      */
     public function index()
     {
+        
+        // Fetches users ID and all messages
         $id = Auth::id();
         $recievedMessages = Message::all()->where('to', $id);
         $sentMessages = Message::all()->where('from', $id);
         
         
-        return view('messages', ['recievedMessages' => $recievedMessages, 
-                             'sentMessages' => $sentMessages, 'id' => $id]);
+        return view('messages', [   'recievedMessages' => $recievedMessages, 
+                                    'sentMessages' => $sentMessages, 
+                                    'id' => $id]);
 
     }
     
@@ -51,6 +54,7 @@ class MessageController extends Controller
             'content' => 'required'
         ]);
         
+        // Stores the data into a model, which stores it all into database
         Message::create([
             'title' => request('title'),
             'content' =>  request('content'),
@@ -62,7 +66,7 @@ class MessageController extends Controller
             
         ]);
         
-        return 'suksess';
+        return 'suksess'; // Have to be removed
         
         
         return redirect('/');

@@ -16,6 +16,7 @@ class MessagesTableSeeder extends Seeder
             'content' => 'Litt bedre forklaring, her er litt tang',
             'from' => '2',
             'to' => '3',
+            'created_at' => '2017-05-28 10:30:40',
         ]);
         
         DB::table('messages')->insert([
@@ -23,6 +24,7 @@ class MessagesTableSeeder extends Seeder
             'content' => 'Det er en deal',
             'from' => '3',
             'to' => '2',
+            'created_at' => '2017-05-30 19:40:56',
         ]);
         
         DB::table('messages')->insert([
@@ -30,6 +32,7 @@ class MessagesTableSeeder extends Seeder
             'content' => 'Da har vi en plan',
             'from' => '2',
             'to' => '3',
+            'created_at' => '2017-05-28 18:30:56',
         ]);
     }
 }

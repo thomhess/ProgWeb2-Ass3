@@ -6,7 +6,7 @@ function getUsersPosts(id){
         url: '../api/posts/user/' + id,
         success: function(posts) {
             $.each(posts, function(i, post){
-                $('#allPosts').append('<div id="mypost'+ post.id +'"><h3>'+ post.title +'</h3><p>'+ post.body +'</p><button class="delPost" value="' + post.id + '" >Slett</button><hr></div>');
+                $('#allPosts').append('<div id="mypost'+ post.id +'"><p>'+ post.created_at+'</p><h3>'+ post.title +'</h3><p>'+ post.body +'</p><button class="delPost" value="' + post.id + '" >Slett</button><hr></div>');
             })
         },
         error: function(){
