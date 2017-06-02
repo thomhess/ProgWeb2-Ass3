@@ -38,6 +38,7 @@ class PostController extends Controller
         }
     }
     
+    // Stores new post
     public function store(Request $data){
         $id = Auth::user()->id; // Sets users id as variable
         
