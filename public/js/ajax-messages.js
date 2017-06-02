@@ -63,8 +63,8 @@ $("#messageModal").delegate('#sendMessage', 'click', function() {
         error: function(data){
         var errors = data.responseJSON;
         console.log(errors);
-            console.log('something');
-        // Render the errors with js ...
+            $('.modal-body').html('<h2>Du må fylle ut alle feltene.</h2>');
+              $('.modal-footer').html('<button type="button" class="btn btn-primary" data-dismiss="modal">Lukk</button>');
       }
     });      
 }); 
