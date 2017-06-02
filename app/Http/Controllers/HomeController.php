@@ -26,18 +26,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $id = Auth::id();
-        $recievedMessages = Message::all()->where('to', $id);
-        $sentMessages = Message::all()->where('from', $id);
-        
-        
-        return view('home', ['recievedMessages' => $recievedMessages, 
-                             'sentMessages' => $sentMessages]);
+        return view('home');
 
     }
     
-    public function userAPI(User $id){
-        
-        return response()->json($id);
-    }
 }

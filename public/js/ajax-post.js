@@ -1,3 +1,4 @@
+// Presents modal with info
 $('.replyBtn').on('click', function() {
     var modal = $('#messageModal')
     var button = $(event.relatedTarget)
@@ -5,6 +6,7 @@ $('.replyBtn').on('click', function() {
     modal.find('input[name=reciever]').val(userid);
 })
 
+// AJAX to send post-request for each new message
 $("#messageModal").delegate('#sendMessage', 'click', function() {         
     var token = $('input[name="_token"]').val();
     var title = $('input[name=title]').val();

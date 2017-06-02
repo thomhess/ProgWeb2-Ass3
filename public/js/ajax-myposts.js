@@ -1,6 +1,7 @@
 var username = null;
 var allPosts = $('#allPosts');
 
+// Gets all posts written by user
 function getUsersPosts(id){
     $.ajax({
         url: '../api/posts/user/' + id,
@@ -15,9 +16,10 @@ function getUsersPosts(id){
     })
 }
 
+// Runs method
 getUsersPosts(id);
 
-
+// AJAX to delete post
 allPosts.delegate('.delPost', 'click', function() {
     var delPostID = $(this).val();
     var token = $('input[name="_token"]').val();

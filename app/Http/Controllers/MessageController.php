@@ -20,35 +20,21 @@ class MessageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
+    // Returns messages.blade.php and sends id of user as variable
     public function index()
     {
         
         // Fetches users ID and all messages
         $id = Auth::id();
-        $recievedMessages = Message::all()->where('to', $id);
-        $sentMessages = Message::all()->where('from', $id);
         
-        
-        return view('messages', [   'recievedMessages' => $recievedMessages, 
-                                    'sentMessages' => $sentMessages, 
-                                    'id' => $id]);
+        return view('messages', ['id' => $id]);
 
     }
     
-    public function create(){
-        
-        if (Auth::check()) {
-            
-            $id = Auth::id();
-            
-            return view('createmessage');
-        } else {
-            
-            return redirect('/');
-        }
-    }
-    
+    // Validates and stores messages
     public function store(Request $data){
+        // Validates data
         $this->validate(request(), [
             'title' => 'required',
             'content' => 'required'
@@ -68,15 +54,14 @@ class MessageController extends Controller
         
         return 'suksess'; // Have to be removed
         
-        
-        return redirect('/');
-        
     }
     
+    // Makes JSON-api for each message sent by user
     public function messageAPIfrom($user) {
         
-        $id = Auth::user()->id;
+        $id = Auth::user()->id; // Sets users id as variable
         
+        // Checks if user have permission to access data. Returns API
         if ($user == $id) {
             
             $messages = Message::with('sender', 'reciever')->where('from', $user)->get();
@@ -90,10 +75,12 @@ class MessageController extends Controller
         }
     }
     
+    // Makes JSON-api for each message recieved by user
     public function messageAPIto($user) {
         
-        $id = Auth::user()->id;
+        $id = Auth::user()->id; // Sets users id as variable
         
+        // Checks if user have permission to access data. Returns API
         if ($user == $id) {
             
             $messages = Message::with('sender', 'reciever')->where('to', $user)->get();

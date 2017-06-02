@@ -1,6 +1,11 @@
+//// AJAX to load messages ////
+
+
 var allMessages = $('#to');
 var name = '';
 
+
+// Method to fetch all messages
 function getMessages(id, type){
     
     $.ajax({
@@ -19,9 +24,11 @@ function getMessages(id, type){
     })
 }
 
+// Runs the method twice, once for inbox and once for sent messages
 getMessages(id, 'to');
 getMessages(id, 'from');
 
+// Presents the modal with info
 allMessages.delegate('.replyBtn', 'click', function() {
     name = $(this).data('from');
     var id = $(this).data('rec');
@@ -32,6 +39,7 @@ allMessages.delegate('.replyBtn', 'click', function() {
     modal.find('input[name=reciever]').val(id);
 })
 
+// AJAX to send post-request for each new message
 $("#messageModal").delegate('#sendMessage', 'click', function() {         
     var token = $('input[name="_token"]').val();
     var title = $('input[name=title]').val();
