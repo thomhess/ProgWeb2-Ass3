@@ -13,7 +13,7 @@
  <!-- Authentication Links -->
 @if (Auth::guest())
     <h2><a href="{{ route('login') }}">Login</a> eller <a href="{{ route('register') }}">registrer</a> for å sende forespørsel</h2>
-@else
+@elseif (Auth::user()->id != $post->user_id)
     <h2><button type="button" class="replyBtn btn-link" data-toggle="modal" data-target="#messageModal">Send forespørsel</button> på dette</h2> <!-- Send forespørsel må fikses route på-->
     
     
