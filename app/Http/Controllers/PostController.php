@@ -46,8 +46,7 @@ class PostController extends Controller
             'titel'=> 'required|max:30',
             'beskrivelse'=> 'required|min:10',
             'bilde'=> 'required|image|mimes:jpeg,png,jpg,gif,svg|max:4048'
-
-            ]);
+        ]);
 
         // stores image at public/storage/post 
         if($data->hasFile('bilde'))

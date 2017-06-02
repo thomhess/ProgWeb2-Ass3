@@ -62,9 +62,14 @@ $("#messageModal").delegate('#sendMessage', 'click', function() {
         },
         error: function(data){
         var errors = data.responseJSON;
-        console.log(errors);
-            $('.modal-body').html('<h2>Du må fylle ut alle feltene.</h2>');
-              $('.modal-footer').html('<button type="button" class="btn btn-primary" data-dismiss="modal">Lukk</button>');
+        //console.log(errors);
+        if (errors.content && !errors.title){
+            $('#modal-error').html('<div class="alert alert-danger" role="alert"></span><span class="sr-only">Error:</span>Melding-feltet er påkrevd</div>');
+        } else if (errors.title && !errors.content) {
+            $('#modal-error').html('<div class="alert alert-danger" role="alert"></span><span class="sr-only">Error:</span>Tittel-feltet er påkrevd</div>');
+        } else if (errors.title && errors.content){
+            $('#modal-error').html('<div class="alert alert-danger" role="alert"></span><span class="sr-only">Error:</span>Dy må fylle ut begge feltene</div>');
+        }
       }
     });      
 }); 
