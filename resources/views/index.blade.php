@@ -17,18 +17,9 @@
         </div>
         <hr>
         
-        <div class="row" id="posts">
-         
-<!--
-        @foreach($posts as $post)
-          <div class="card">
-            <img src="http://placehold.it/300x200" alt="Card image cap">
-            <h2> <a href="/public/posts/{{$post->id}}">{{ $post->title }}</a></h2>
-          </div>
-        @endforeach
--->
-
+        <div class="row" id="posts"> 
       </div>
+
     </div>
 @endsection
 
